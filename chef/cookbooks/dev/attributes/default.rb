@@ -13,4 +13,4 @@ default[:pips]      = ["ipython",
 
 default[:kerls]     = ["R16B03",
 	                   "17.5",
-	                   "18"]
+	                   "18.0"]
