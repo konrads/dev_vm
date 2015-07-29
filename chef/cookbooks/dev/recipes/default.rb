@@ -16,12 +16,8 @@ execute "apt update" do
 end
 
 # install debs
-debs.each do |deb_info|
-  deb_name, deb_ver = deb_info.split "=", 2
-  package deb_name # do
-    # version deb_ver
-    # options no_cache_opts # necessary?
-  # end
+debs.each do |deb_name|
+  package deb_name 
 end
 
 # virtualenv installation

@@ -6,7 +6,8 @@ default[:debs]      = ["vim",
                        "python-setuptools",
                        "python-pip",
                        "python-virtualenv",
-                       "virtualenvwrapper"]
+                       "virtualenvwrapper",
+                       "iptables"]
 
 default[:pips]      = ["ipython", 
                        "nose"]
