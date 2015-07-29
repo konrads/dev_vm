@@ -23,6 +23,7 @@ end
 # virtualenv installation
 execute "Create virtualenv" do
   user os_user
+  group os_user
   command "virtualenv #{virtualenv_root}"
   not_if { File.exists?(virtualenv_root) }
 end
@@ -37,7 +38,8 @@ end
 pips.each do |pip|
   execute "Installing pip #{pip}" do
     user os_user
-    command "#{virtualenv_root}/bin/pip install --log=#{home_dir}/.pip.log --download-cache=#{pip_cache} #{pip}"
+    group os_user
+    command "#{virtualenv_root}/bin/pip install --log=#{home_dir}/.pip.log --download-cache=#{pip_cache} --upgrade #{pip}"
   end
 end
 
@@ -72,12 +74,14 @@ kerls.each do |kerl_p|
   installed_release = "#{home_dir}/.kerl/installed-releases/#{kerl_p.downcase}"
   execute "Kerl build #{kerl_p.upcase}" do
     user os_user
+    group os_user
     creates "#{home_dir}/.kerl/builds/#{kerl_p.downcase}"
     environment ({"HOME" => home_dir})
     command "#{home_dir}/bin/kerl build #{kerl_p.upcase} #{kerl_p.downcase}"
   end
   execute "Kerl install #{kerl_p.upcase}" do
     user os_user
+    group os_user
     creates installed_release
     environment ({"HOME" => home_dir})
     command "#{home_dir}/bin/kerl install #{kerl_p.downcase} #{installed_release}"

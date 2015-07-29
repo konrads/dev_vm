@@ -1,17 +1,20 @@
 # change this file if more deb, pip or kerl packages are needed
-default[:debs]      = ["vim",
-                       "build-essential",
-                       "curl",
-                       "python-dev",
-                       "python-setuptools",
-                       "python-pip",
-                       "python-virtualenv",
-                       "virtualenvwrapper",
-                       "iptables"]
+default[:debs]  = ["vim",
+                   "build-essential",
+                   "curl",
+                   "wget",
+                   "git",
+                   "iptables",
+                   "python-dev",
+                   "python-pip",
+                   "python-virtualenv",
+                   "virtualenvwrapper"]
 
-default[:pips]      = ["ipython", 
-                       "nose"]
+default[:pips]  = ["setuptools",
+                   "ipython", 
+                   "nose",
+                   "fancycompleter"]
 
-default[:kerls]     = ["R16B03",
-	                   "17.5",
-	                   "18.0"]
+default[:kerls] = ["R16B03",
+                   "17.5",
+                   "18.0"]
