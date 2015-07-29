@@ -114,4 +114,4 @@ export PATH=~/bin:$PATH
 workon dev
 
 # setup kerl
-. ~/.kerl/installed-releases/r16b/activate
+. ~/.kerl/installed-releases/r16b03/activate

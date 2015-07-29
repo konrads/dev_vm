@@ -14,17 +14,22 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Network
   #config.vm.network :bridged,  :bridge => "eth0"
   #config.vm.network :hostonly, "192.168.50.4"
-  config.vm.network :private_network, ip: "192.168.50.1"
+  config.vm.network :private_network, ip: "192.168.50.5"
 
   config.vm.synced_folder "../..", "/home/vagrant/work/", id: "work", nfs: true
   
+  config.vm.provider "virtualbox" do |v|
+    v.memory = 1024
+    v.cpus = 1
+  end
+
   # Enable provisioning with chef solo, specifying a cookbooks path, roles
   # path, and data_bags path (all relative to this Vagrantfile), and adding 
   # some recipes and/or roles.
   config.vm.provision :chef_solo do |chef|
     chef.log_level      = :debug
     chef.cookbooks_path = "../chef/cookbooks"
-    chef.add_recipe "bet365"
+    chef.add_recipe "dev"
   end
 
 end
